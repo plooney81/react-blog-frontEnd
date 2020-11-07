@@ -1,0 +1,12 @@
+.cardTitle {
+    color: var(--mainBrandColor);
+    background-color: var(--lightShades);
+    font-weight: bold;
+}
+
+.card-body {
+    color: var(--lightShades);
+    background-color: var(--darkAccent);
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
