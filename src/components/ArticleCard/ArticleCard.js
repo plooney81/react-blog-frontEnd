@@ -3,12 +3,13 @@ import {useState, useEffect} from 'react';
 
 import { Link } from 'react-router-dom';
 
-import {Card} from 'react-bootstrap';
+import {Card, Button} from 'react-bootstrap';
 
 import './ArticleCard.css';
 
 export default function ArticleCard(props) {
     const { id, title, author, content, createdAt, published } = props.postData
+    const del = props.del
     const timeCreated = new Date(createdAt);
     const [comments, setComments] = useState([]);
 
@@ -21,13 +22,22 @@ export default function ArticleCard(props) {
             .catch(error => console.log(error))
         console.log(props.postData.id)
     }, [])
+
+    const deletePost = () => {
+        fetch(``)
+    }
     return (
         <>
         <Link to={`article/detail/${id}`}>
             <Card className="mt-4">
-                <Card.Header className="cardTitle">
-                    <i class="fas fa-newspaper mr-3"></i>
-                    {title}
+                <Card.Header className="cardTitle d-flex justify-content-between">
+                    <div>
+                        <i class="fas fa-newspaper mr-3"></i>
+                        {title}
+                    </div>
+                    <div>
+                        {del ? <Button className="delete-button" onClick={deletePost}>Delete</Button> : ''}
+                    </div>
                 </Card.Header>
                 <Card.Body className="d-flex flex-column">
                     <Card.Text className="p-1">

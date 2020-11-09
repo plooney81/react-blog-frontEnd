@@ -9,6 +9,7 @@ import {Container} from 'react-bootstrap';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import ArticleCard from '../ArticleCard/ArticleCard';
 import CommentForm from '../CommentForm/CommentForm';
+import CommentCard from '../CommentCard/CommentCard';
 
 import './Article.css';
 
@@ -31,6 +32,8 @@ export default function Article() {
                 setPosts(data)
             })
             .catch(error => console.log(error))
+        setComments([])
+        setPosts({})
         console.log(comments)
         console.log(posts)
         //! getting an error for line 37 that says "React Hook useEffect has missing dependencies: 'articleId', 'comments', and 'posts'"
@@ -45,8 +48,9 @@ export default function Article() {
         <>
             <NavigationBar></NavigationBar>
             <Container>
-                <ArticleCard postData={posts}></ArticleCard>
+                <ArticleCard postData={posts} del={true}></ArticleCard>
                 <CommentForm postData={posts}></CommentForm>
+                {comments.map(comment => <CommentCard key={comment.id} commentData={comment}></CommentCard>)}
             </Container>
         </>
     )

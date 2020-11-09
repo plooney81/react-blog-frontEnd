@@ -21,8 +21,7 @@ export default function CommentForm(props) {
               },
             body: JSON.stringify({
                 author: userName,
-                content: comment,
-                approved: true //! ONLY FOR TESTING PURPOSES, CHANGE TO FALSE LATER
+                content: comment
             })
         })
             .then(res => res.status === 201 ? console.log('Comment approved') : console.log('Comment rejected'))
